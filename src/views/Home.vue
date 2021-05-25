@@ -8,11 +8,21 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import {postWebHome,getMock} from '../request'
 
 export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  methods:{
+    //测试1
+    getMock(){
+      getMock().then(res=>{console.log(res);}).catch(err=>{console.log(err);})
+    }
+  },
+  created(){
+    this.getMock()
   }
 }
 </script>
