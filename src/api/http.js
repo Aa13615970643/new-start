@@ -17,14 +17,8 @@ const http={
         const config={
             method:'post',
             url:url,
-            data:{
-                time: "1246",
-                config: {},
-                sgin: "5456",
-                data: {}     
-            },
         }
-        if (data) config.data.data = data
+        if (data) config.data = data
         return request(config)    
     },
     put(url,params){

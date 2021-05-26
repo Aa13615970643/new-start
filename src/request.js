@@ -1,5 +1,5 @@
 import http from './api/http'
-require('./api/mock')
+
 //封装请求地址
 // 
 /**
@@ -7,14 +7,20 @@ require('./api/mock')
  *  @param '/testIp'代表vue-cil中config，index.js中配置的代理
  */
  let resquest = "/testIp/request/"
- // 测试数据
- export function postWebHome(data){
-    return http.post(`/web_home`,data)
+//  // 测试数据
+//  export function postWebHome(data){
+//     return http.post(`/web_home`,data)
+//  }
+//  export function postregiter(data){
+//     return http.post(`/user/register`,data)
+//  }
+//  export function postlogin(data){
+//     return http.post(`/user/login`,data)
+//  }
+ //获取文章列表
+ export function getArticle(params){
+     return http.get('article/list',params)
  }
- //mock 的测试数据
- export function getMock(params){
-    return http.get(`data/index`,params)
-}
  // get请求
  export function getListAPI(params){
      return http.get(`${resquest}/getList.json`,params)

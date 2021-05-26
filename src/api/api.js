@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
-    // baseURL:``,  //默认路径
+    baseURL:`http://localhost:3000/api/v1`,  //默认路径
     timeout:5000 //请求超时5000毫秒
 })
 //请求拦截
