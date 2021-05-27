@@ -17,6 +17,14 @@ import http from './api/http'
 //  export function postlogin(data){
 //     return http.post(`/user/login`,data)
 //  }
+ //文章的查询
+export function getInquireArticle(params,index){  
+    return http.get(`/category/article/${index}`,params)
+}
+ //获取文章分类列表
+ export function getArticleList(params){
+    return http.get('category/list',params)
+}
  //获取文章列表
  export function getArticle(params){
      return http.get('article/list',params)
