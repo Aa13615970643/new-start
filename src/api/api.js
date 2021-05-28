@@ -33,7 +33,6 @@ api.interceptors.response.use(response=>{
         break;
       case 404:
         error.message = '请求错误,未找到该资源'
-        window.location.href = "/NotFound"
         break;
       case 405:
         error.message = '请求方法未允许'
