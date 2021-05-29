@@ -7,16 +7,7 @@ import http from './api/http'
  *  @param '/testIp'代表vue-cil中config，index.js中配置的代理
  */
  let resquest = "/testIp/request/"
-//  // 测试数据
-//  export function postWebHome(data){
-//     return http.post(`/web_home`,data)
-//  }
-//  export function postregiter(data){
-//     return http.post(`/user/register`,data)
-//  }
-//  export function postlogin(data){
-//     return http.post(`/user/login`,data)
-//  }
+ //home
 //获取详情页的数据
 export function getDetailsPage(index,params){
    return http.get(`article/detail/${index}`,params)
@@ -48,4 +39,12 @@ export function getInquireArticle(params,index){
  // delete 请求
  export function deleteListAPI(params){
      return http.delete(`${resquest}/deleteList.json`,params)
+ }
+ //admin
+ export function Login(data){
+      return http.post('user/login',data)
+ }
+ //获取文章列表
+ export function getArticlelist(params){
+     return http.get('/list',params)
  }

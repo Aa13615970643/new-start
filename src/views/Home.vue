@@ -5,16 +5,16 @@
     </v-system-bar>
     <v-navigation-drawer v-model="drawer" app>
       <v-sheet color="grey lighten-4" class="pa-4">
-        <v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
+        <v-avatar class="mb-4" color="grey darken-1" size="64" @click="changLogin"></v-avatar>
         <div>708929573@qq.com</div>
       </v-sheet>
       <v-divider></v-divider>
     <v-list>
-      <v-list-group
+       <v-list-group
         v-for="(item,index) in getarticlelist "
         :key="index"
         @click="getInquireArticle(item)"
-      >
+       >
         <template v-slot:activator>
           <v-list-item-title>{{item.name}}</v-list-item-title>
         </template>
@@ -64,6 +64,14 @@ export default {
     };
   },
   methods: {
+
+    //跳转登录
+    changLogin(){
+      this.$router.push({
+         name:'Login'
+         
+      })
+    },
     //递归
     Recursion(index){
        let that = this
