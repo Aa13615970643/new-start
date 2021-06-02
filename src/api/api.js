@@ -6,7 +6,13 @@ const api = axios.create({
 //请求拦截
 api.interceptors.request.use(config=>{
     //发送请求之前做什么
-    return config;},
+      // 判断是否存在token，如果存在的话，则每个http header都加上token
+      let token = window.sessionStorage.getItem('token')
+      if (!config.headers.hasOwnProperty('Authorization') && token) {
+        config.headers.Authorization = 'Bearer ' +token;
+      }
+      return config;
+  },
     error=>{
     //对请求错误的处理
     return Promise.reject(error)

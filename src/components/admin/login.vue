@@ -109,7 +109,7 @@ export default {
                this.text = res.data.message
               if (res.status == 200) {
                 //保存token
-                 window.sessionStorage.setItem('token', res)
+                 window.sessionStorage.setItem('token', res.data.data.token)
                 //跳转到管理后台
                  this.$router.push({
                      name:'Admin'
