@@ -1,7 +1,5 @@
 <template>
  <v-app id="inspire">
-    
-    
             <v-card >
               <v-toolbar color="black" dark flat>
                 <v-toolbar-title>新增分类</v-toolbar-title>
@@ -86,12 +84,9 @@ export default {
          //表单验证信息
          valid: false,
          CategoryName:'',
-         Parentcategory:'',
+         Parentcategory:'0',
          Level:'',
          CategoryNameRules:[
-        v => !!v || '不能为空',
-        ],
-         ParentcategoryRules: [
         v => !!v || '不能为空',
         ],
          LevelRules: [

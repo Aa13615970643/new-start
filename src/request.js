@@ -41,3 +41,7 @@ export function getInquireArticle(params,index){
  export function addCategory(data){
       return http.post('category/create',data)
  }
+ //添加文章
+ export function addActicle(data){
+     return http.post(`article/create`,data)
+ }

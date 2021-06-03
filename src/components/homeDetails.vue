@@ -22,7 +22,7 @@
                         阅读{{detailsList.browser}}次   {{detailsList.author}}  {{detailsList.createdAt}}
             </v-card-subtitle>
             <v-card-text>
-                 {{detailsList.content}}
+              <div v-html="detailsList.content"></div>
             </v-card-text>
             
             

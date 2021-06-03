@@ -96,7 +96,7 @@ export default {
       }
        let res = await getInquireArticle(params,iterator)
       if (res.data.data[0].articles.length !== 0) {
-          articles.push(res.data.data[0].articles[0])
+          articles.push(...res.data.data[0].articles)
       }else{
         this.article=[]
       }
