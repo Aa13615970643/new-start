@@ -96,6 +96,7 @@
         </v-btn>
       </template>
     </v-snackbar>
+
   </v-app>
 </template>
 
@@ -111,7 +112,7 @@ export default {
   },
  data(){
      return{
-       
+        snackbar:false,
         //富文本
          content: `<p></p><p><br></p><ol><li><strong><em>Or drag/paste an image here.</em></strong></li><li><strong><em>rerew</em></strong></li><li><strong><em>rtrete</em></strong></li><li><strong><em>tytrytr</em></strong></li><li><strong><em>uytu</em></strong></li></ol>`,
          editorOption: {},
@@ -173,7 +174,15 @@ export default {
          cover:''
        }
        addActicle(index).then(res=>{
-         console.log(res);
+         if (res.status ==200) {
+            this.snackbar= true
+            this.text = '创建文章成功'
+            this.reset()
+            this.content =''
+         }else{
+           this.snackbar = true
+           this.text = '创建文章失败'
+         }
        })
      },
     //表单提交的方法
