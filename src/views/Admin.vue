@@ -1,7 +1,24 @@
 <template>
   <v-app id="inspire">
     <v-system-bar app>
-      <v-spacer></v-spacer>
+      <v-spacer>
+         <v-row
+      class="d-flex align-center"
+      >
+        <v-btn
+          color="#616161"
+          dark
+          depressed
+          x-small
+          @click.stop="drawer = !drawer"
+        >
+         <v-icon dark>
+        mdi-format-list-bulleted-square
+      </v-icon>
+  
+        </v-btn>
+      </v-row>
+      </v-spacer>
     </v-system-bar>
 
     <v-navigation-drawer v-model="drawer" app>

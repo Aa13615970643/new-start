@@ -1,15 +1,44 @@
 <template>
   <v-app id="inspire">
+ 
     <v-system-bar app>
-      <v-spacer></v-spacer>
+      <v-spacer>
+          
+      <v-row
+      class="d-flex align-center"
+      >
+        <v-btn
+          color="#616161"
+          dark
+          depressed
+          x-small
+          @click.stop="drawer = !drawer"
+        >
+         <v-icon dark>
+        mdi-format-list-bulleted-square
+      </v-icon>
+  
+        </v-btn>
+      </v-row>
+    
+      </v-spacer>
     </v-system-bar>
-    <v-navigation-drawer v-model="drawer" app>
+    
+    <v-navigation-drawer
+     v-model="drawer" 
+     app>
       <v-sheet color="grey lighten-4" class="pa-4">
         <v-avatar class="mb-4" color="grey darken-1" size="64" @click="changLogin"></v-avatar>
         <div>708929573@qq.com</div>
       </v-sheet>
       <v-divider></v-divider>
     <v-list>
+          <v-list-group 
+          @click="getArticle">
+       <template v-slot:activator>
+          <v-list-item-title>全部</v-list-item-title>
+        </template>
+      </v-list-group>
        <v-list-group
         v-for="(item,index) in getarticlelist "
         :key="index"
@@ -44,6 +73,7 @@
       </v-list-group>
     </v-list>
     </v-navigation-drawer>
+
     <router-view :article='article'></router-view>
 
   </v-app>
@@ -128,4 +158,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.btn{
+  position: absolute;
+  top: 2.5rem;
+  left: 2rem;
+  z-index: 1;
+}
+</style>
