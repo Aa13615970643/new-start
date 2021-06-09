@@ -7,6 +7,10 @@ import http from './api/http'
  *  @param '/testIp'代表vue-cil中config，index.js中配置的代理
  */
  //home
+//  账号注册
+export function postZhuce(data){
+    return http .post(`user/register`,data)
+}
 //获取详情页的数据
 export function getDetailsPage(index,params){
    return http.get(`article/detail/${index}`,params)

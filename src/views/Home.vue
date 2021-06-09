@@ -1,85 +1,77 @@
 <template>
   <v-app id="inspire">
- 
     <v-system-bar app>
       <v-spacer>
-          
-      <v-row
-      class="d-flex align-center"
-      >
-        <v-btn
-          color="#616161"
-          dark
-          depressed
-          x-small
-          @click.stop="drawer = !drawer"
-        >
-         <v-icon dark>
-        mdi-format-list-bulleted-square
-      </v-icon>
-  
-        </v-btn>
-      </v-row>
-    
+        <v-row class="d-flex align-center">
+          <v-btn
+            color="#616161"
+            dark
+            depressed
+            x-small
+            @click.stop="drawer = !drawer"
+          >
+            <v-icon dark> mdi-format-list-bulleted-square </v-icon>
+          </v-btn>
+        </v-row>
       </v-spacer>
     </v-system-bar>
-    
-    <v-navigation-drawer
-     v-model="drawer" 
-     app>
+
+    <v-navigation-drawer v-model="drawer" app>
       <v-sheet color="grey lighten-4" class="pa-4">
-        <v-avatar class="mb-4" color="grey darken-1" size="64" @click="changLogin"></v-avatar>
+        <v-avatar
+          class="mb-4"
+          color="grey darken-1"
+          size="64"
+          @click="changLogin"
+        ></v-avatar>
         <div>708929573@qq.com</div>
       </v-sheet>
       <v-divider></v-divider>
-    <v-list>
-          <v-list-group 
-          @click="getArticle">
-       <template v-slot:activator>
-          <v-list-item-title>全部</v-list-item-title>
-        </template>
-      </v-list-group>
-       <v-list-group
-        v-for="(item,index) in getarticlelist "
-        :key="index"
-        @click="getInquireArticle(item)"
-       >
-        <template v-slot:activator>
-          <v-list-item-title>{{item.name}}</v-list-item-title>
-        </template>
-
+      <v-list>
+        <v-list-group @click="getArticle">
+          <template v-slot:activator>
+            <v-list-item-title>全部</v-list-item-title>
+          </template>
+        </v-list-group>
         <v-list-group
-          sub-group
-          v-for="(item,index) in item.sub_category"
+          v-for="(item, index) in getarticlelist"
+          :key="index"
           @click="getInquireArticle(item)"
-         :key="index"
         >
           <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>{{item.name}}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ item.name }}</v-list-item-title>
           </template>
 
-          <v-list-item
-            v-for="(item,index) in item.sub_category"
+          <v-list-group
+            sub-group
+            v-for="(item, index) in item.sub_category"
             @click="getInquireArticle(item)"
             :key="index"
-            link
           >
-            <v-list-item-title>{{item.name}}</v-list-item-title>
-          </v-list-item>
-        </v-list-group>
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.name }}</v-list-item-title>
+              </v-list-item-content>
+            </template>
 
-      </v-list-group>
-    </v-list>
+            <v-list-item
+              v-for="(item, index) in item.sub_category"
+              @click="getInquireArticle(item)"
+              :key="index"
+              link
+            >
+              <v-list-item-title>{{ item.name }}</v-list-item-title>
+            </v-list-item>
+          </v-list-group>
+        </v-list-group>
+      </v-list>
     </v-navigation-drawer>
 
-    <router-view :article='article'></router-view>
-
+    <router-view :article="article"></router-view>
   </v-app>
 </template>
 <script>
-import { getArticle,getArticleList,getInquireArticle} from "@/request";
+import { getArticle,getArticleList,getInquireArticle,postZhuce} from "@/request";
 export default {
   data() {
     return {
@@ -94,7 +86,18 @@ export default {
     };
   },
   methods: {
+//     postZhuce(){
+//       let data ={
 
+//     username:'root',
+// password:'root',
+// email:'708929573@qq.com'
+//       }
+//      postZhuce(data).then(res=>{
+//        console.log(res);
+//      }) 
+//     },
+     
     //跳转登录
     changLogin(){
       this.$router.push({
@@ -159,7 +162,7 @@ export default {
 </script>
 
 <style>
-.btn{
+.btn {
   position: absolute;
   top: 2.5rem;
   left: 2rem;
