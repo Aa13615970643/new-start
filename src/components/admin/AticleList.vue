@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { getArticle,deleteArticle } from "../../request";
+import { getArticle,deleteArticle,changeArticle } from "../../request";
 export default {
   data() {
     return {
@@ -94,6 +94,12 @@ export default {
   },
 
   methods: {
+    //更改文章内容
+    changeArticle(){
+      changeArticle().then(res=>{
+        console.log(res);
+      })
+    },    
     closeDelete(){
       this.dialogDelete = false
       this.dailname={}

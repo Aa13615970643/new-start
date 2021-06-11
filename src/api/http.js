@@ -37,6 +37,18 @@ const http={
         if (params) config.params = params
         return request(config)    
     },
+    //上传图片
+    updata(url,data){
+        const config={
+            method:"post",
+            url:url,
+            data,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+        }
+        return request(config)  
+    }
     
 }
 //导出

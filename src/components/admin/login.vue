@@ -112,7 +112,7 @@ export default {
                  window.sessionStorage.setItem('token', res.data.data.token)
                 //跳转到管理后台
                  this.$router.push({
-                     name:'Admin'
+                     path:`/Admin`
                  })
               }
           })

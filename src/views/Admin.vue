@@ -6,8 +6,6 @@
       class="d-flex align-center"
       >
         <v-btn
-          color="#616161"
-          dark
           depressed
           x-small
           @click.stop="drawer = !drawer"

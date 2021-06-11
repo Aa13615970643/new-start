@@ -10,6 +10,7 @@
                  <template v-for="(item,index) in article" >
                     <v-list-item :key="index" @click="changeDetails(item.id)">
                      <v-list-item-avatar color="grey darken-1">
+                      <v-img :src="item.cover"></v-img>
                      </v-list-item-avatar>
                      <v-list-item-content v-cloak>
                       <v-list-item-title>{{item.title}}</v-list-item-title>

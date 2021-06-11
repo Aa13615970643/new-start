@@ -4,8 +4,8 @@
       <v-spacer>
         <v-row class="d-flex align-center">
           <v-btn
-            color="#616161"
-            dark
+    
+            
             depressed
             x-small
             @click.stop="drawer = !drawer"
@@ -23,7 +23,9 @@
           color="grey darken-1"
           size="64"
           @click="changLogin"
-        ></v-avatar>
+        >
+        <img src="../assets/avtor.jpg" alt="">
+        </v-avatar>
         <div>708929573@qq.com</div>
       </v-sheet>
       <v-divider></v-divider>
@@ -39,6 +41,11 @@
           @click="getInquireArticle(item)"
         >
           <template v-slot:activator>
+            <v-avatar
+  size="30"
+>
+<img :src='item.icon' alt="">
+</v-avatar>
             <v-list-item-title>{{ item.name }}</v-list-item-title>
           </template>
 
@@ -50,7 +57,8 @@
           >
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title>{{ item.name }}</v-list-item-title>
+                <v-list-item-title>
+                  {{ item.name }}</v-list-item-title>
               </v-list-item-content>
             </template>
 
@@ -89,9 +97,9 @@ export default {
 //     postZhuce(){
 //       let data ={
 
-//     username:'root',
-// password:'root',
-// email:'708929573@qq.com'
+//     username:'admin',
+//   password:'123456',
+//  email:'708929573@qq.com'
 //       }
 //      postZhuce(data).then(res=>{
 //        console.log(res);

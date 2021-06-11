@@ -49,3 +49,15 @@ export function getInquireArticle(params,index){
  export function addActicle(data){
      return http.post(`article/create`,data)
  }
+ //上传图片接口
+ export function updata(data){
+     return http.updata('article/updata',data)
+ }
+ //更改文章
+ export function changeArticle(index){
+     return http.put(`article/update/${index}`)
+ }
+ //更改分类
+ export function changeCategory(index){
+     return http.put(`category/update/${index}`)
+ }
