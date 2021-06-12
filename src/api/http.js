@@ -21,12 +21,12 @@ const http={
         if (data) config.data = data
         return request(config)    
     },
-    put(url,params){
+    put(url,data){
         const config={
             method:'put',
             url:url
         }
-        if (params) config.params = params
+        if (data) config.data = data
         return request(config)    
     },
     delete(url,params){

@@ -54,8 +54,8 @@ export function getInquireArticle(params,index){
      return http.updata('article/updata',data)
  }
  //更改文章
- export function changeArticle(index){
-     return http.put(`article/update/${index}`)
+ export function changeArticle(index,data){
+     return http.put(`article/update/${index}`,data)
  }
  //更改分类
  export function changeCategory(index){

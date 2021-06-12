@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import {addCategory,getArticleList,updata } from '../../request.js'
+import {changeCategory,addCategory,getArticleList,updata } from '../../request.js'
 export default {
  data(){
      return{
@@ -104,6 +104,12 @@ export default {
      }
  },
  methods:{
+     //更改分类数据
+    changeCategory(){
+      changeCategory().then(res=>{
+        console.log(res);
+      })
+    },
      //图片上传
        // 上传图片
     uploadFile() {

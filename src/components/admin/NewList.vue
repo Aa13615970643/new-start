@@ -26,11 +26,16 @@
           >
           </v-text-field>
           <v-file-input
+            v-show="!changimg"
             v-model="fileInfo"
             :rules="[(v) => !!v || '文件必选']"
             @change="uploadFile"
             label="点击选择文件，文件格后缀为：.xls、.xlsx"
           ></v-file-input>
+          <div v-show="changimg">
+          <img :src="this.$route.params.cover" alt="" srcset="">
+          <v-btn @click="changimg = !changimg">change</v-btn>
+          </div>
           <v-select
             v-model="ActiclecategoryId"
             :rules="ActiclecategoryIdRules"
@@ -77,7 +82,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" @click="validate">add</v-btn>
+        <v-btn color="primary" @click="validate" v-show="!booo">add</v-btn>
+        <v-btn color="primary" @click="changeArticle" v-show="booo">change</v-btn>
         <v-btn color="red" @click="reset">Reset</v-btn>
       </v-card-actions>
       <!-- 富文本 -->
@@ -102,13 +108,15 @@ import { quillEditor } from "vue-quill-editor"; //调用编辑器
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
-import { addActicle, getArticleList, updata,changeCategory} from "../../request.js";
+import { addActicle, getArticleList, updata,changeArticle } from "../../request.js";
 export default {
   components: {
     quillEditor,
   },
   data() {
     return {
+      changimg:false,
+      booo:false,
       cover: "",
       fileInfo: "",
       loading: {
@@ -175,12 +183,27 @@ export default {
         }
       });
     },
-    //更改分类数据
-    changeCategory(){
-      changeCategory().then(res=>{
-        console.log(res);
-      })
-    },
+        //更改文章内容
+    changeArticle(){
+       let index = this.$route.params.id
+       let params = {
+        title: this.Acticletitle,
+        author: this.Acticleauthor,
+        categoryId: this.ActiclecategoryId,
+        tag: this.tag,
+        introduction: this.introduction,
+        content: this.content,
+        cover: this.cover,
+       } 
+       changeArticle(index,params).then(res=>{
+            this.snackbar = true
+            this.text = res.data.message
+            this.reset()
+             this.changimg = !this.changimg
+       })
+       
+      
+    },   
     // 上传图片
     uploadFile() {
       if (!this.fileInfo) {
@@ -221,7 +244,7 @@ export default {
         content: this.content,
         cover: this.cover,
       };
-      addActicle(index).then((res) => {
+      addActicle(index,params).then((res) => {
         if (res.status == 200) {
           this.snackbar = true;
           this.text = "创建文章成功";
@@ -266,6 +289,22 @@ export default {
     source: String,
   },
   created() {
+    var obj = Object.keys(this.$route.params)
+    if (obj.length !== 0) {
+    this.changimg = true
+    this.booo = true
+    this.Acticletitle = this.$route.params.title
+    this.Acticleauthor= this.$route.params.author
+    this.ActiclecategoryId = this.$route.params.categoryId
+    this.tag = this.$route.params.tag
+    this.introduction = this.$route.params.introduction
+    this.cover = this.$route.params.cover
+    this.content = this.$route.params.content
+    }
+    else{
+      this.booo =false
+      this.changimg = false
+    }
     this.getArticleList();
   },
 };

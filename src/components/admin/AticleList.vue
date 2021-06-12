@@ -39,7 +39,7 @@
       </v-chip>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
-      <v-icon small class="mr-2" @click="editItem"> mdi-pencil </v-icon>
+      <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
     <template v-slot:no-data>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { getArticle,deleteArticle,changeArticle } from "../../request";
+import { getArticle,deleteArticle} from "../../request";
 export default {
   data() {
     return {
@@ -94,12 +94,7 @@ export default {
   },
 
   methods: {
-    //更改文章内容
-    changeArticle(){
-      changeArticle().then(res=>{
-        console.log(res);
-      })
-    },    
+ 
     closeDelete(){
       this.dialogDelete = false
       this.dailname={}
@@ -115,9 +110,10 @@ export default {
       ];
     },
     //跳转到编辑页面
-    editItem() {
+    editItem(item) {
         this.$router.push({
-          name:"NewList"
+          name:"NewList",
+          params:item 
         })
     },
 
